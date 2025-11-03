@@ -6,9 +6,26 @@ function Register() {
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
 
-  function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault();
-    navigate("/Dashbord");
+    try {
+      const res = await fetch('http://localhost:5000/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+  
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        alert(err.error || 'สมัครไม่สำเร็จ');
+        return;
+      }
+  
+      // สมัครสำเร็จ → ไปหน้า dashboard
+      navigate('/dashboard');
+    } catch (err) {
+      alert('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้');
+    }
   }
 
   return (
