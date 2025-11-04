@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"; // Import the CSS file
 
 function Register() {
-  const [username, setusername] = useState("");
-  const [password, setpassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    
+    // Clear previous errors
+    setError("");
+    
+    // Basic validation
+    if (!username || !password) {
+      setError("กรุณากรอกชื่อผู้ใช้และรหัสผ่าน");
+      return;
+    }
+    
     try {
       const res = await fetch('http://localhost:5000/auth/register', {
         method: 'POST',
@@ -17,43 +29,55 @@ function Register() {
   
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        alert(err.error || 'สมัครไม่สำเร็จ');
+        setError(err.error || 'สมัครไม่สำเร็จ');
         return;
       }
   
       // สมัครสำเร็จ → ไปหน้า dashboard
       navigate('/dashboard');
     } catch (err) {
-      alert('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้');
+      setError('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้');
     }
   }
 
   return (
-    <div>
-      <h2>สมัครสมาชิก</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            ชื่อ
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setusername(e.target.value)}
-            />
-          </label>
+    <div className="container">
+      <div className="form-card">
+        <div className="header">
+          <h1 className="title">สร้างบัญชีผู้ใช้</h1>
+          <p className="subtitle">กรุณากรอกข้อมูลเพื่อสมัครสมาชิก</p>
         </div>
-        <div>
-          <label>
-            รหัสผ่าน
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setpassword(e.target.value)}
-            ></input>
-          </label>
+        <form className="form" onSubmit={handleSubmit}>
+          {error && <div className="error">{error}</div>}
+          <div className="input-group">
+            <label>
+              ชื่อผู้ใช้
+              <input
+                type="text"
+                className="input"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="input-group">
+            <label>
+              รหัสผ่าน
+              <input
+                type="password"
+                className="input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <button type="submit" className="button">สมัครสมาชิก</button>
+        </form>
+        <div className="login-link">
+          {/* Fixed the navigation to Login page */}
+          <p>มีบัญชีแล้ว? <button className="link-button" onClick={() => navigate('/login')}>เข้าสู่ระบบ</button></p>
         </div>
-        <button type="submit">สมัครสมาชิก</button>
-      </form>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,130 @@
+/* สไตล์สำหรับ Container หลัก (กึ่งกลางหน้าจอ) */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+/* สไตล์สำหรับ Card ฟอร์ม (กล่องสีขาว) */
+.form-card {
+  width: 100%;
+  max-width: 450px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* สไตล์สำหรับส่วนหัวสีน้ำเงิน */
+.header {
+  background-color: #1a73e8;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* สไตล์สำหรับหัวข้อหลัก */
+.title {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+/* สไตล์สำหรับหัวข้อรอง */
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+  font-family: sans-serif;
+}
+
+/* สไตล์สำหรับฟอร์ม */
+.form {
+  padding: 30px 40px;
+}
+
+/* สไตล์สำหรับกลุ่มช่องกรอก */
+.input-group {
+  margin-bottom: 20px;
+}
+
+/* สไตล์สำหรับช่องกรอกข้อมูล */
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+/* สไตล์สำหรับช่องกรอกข้อมูลเมื่อได้รับโฟกัส */
+.input:focus {
+  border-color: #1a73e8;
+}
+
+/* สไตล์สำหรับปุ่ม */
+.button {
+  width: 100%;
+  padding: 14px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* สไตล์สำหรับปุ่มเมื่อ hover */
+.button:hover {
+  background-color: #0d62c9;
+}
+
+/* สไตล์สำหรับข้อความ error */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* สไตล์สำหรับลิงก์ไปหน้า login */
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+.login-link a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* สไตล์สำหรับปุ่มลิงก์ */
+.link-button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+}

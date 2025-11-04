@@ -1,3 +1,33 @@
+# Inventory Management System
+
+This project is an inventory management system built with React and Node.js.
+
+## Database
+
+โปรเจกต์นี้ใช้ **SQLite** เป็นฐานข้อมูล
+
+### รายละเอียดฐานข้อมูล:
+- **ประเภทฐานข้อมูล**: SQLite
+- **Package/Library**: better-sqlite3 (เวอร์ชัน 12.4.1)
+- **ไฟล์ฐานข้อมูล**: `server/app.db`
+- **การตั้งค่า**: ไฟล์ฐานข้อมูลจะถูกสร้างและจัดการผ่าน `server/db.js`
+
+### โครงสร้างฐานข้อมูล:
+
+#### ตาราง users
+- `id` - INTEGER PRIMARY KEY AUTOINCREMENT
+- `username` - TEXT NOT NULL UNIQUE
+- `password` - TEXT NOT NULL
+- `created_at` - DATETIME DEFAULT CURRENT_TIMESTAMP
+
+### ข้อดีของ SQLite:
+- ไม่ต้องติดตั้งเซิร์ฟเวอร์ฐานข้อมูลแยก
+- เก็บข้อมูลเป็นไฟล์เดียว
+- เหมาะสำหรับโปรเจกต์ขนาดเล็กถึงกลาง
+- รองรับการทำงานแบบ ACID (Atomicity, Consistency, Isolation, Durability)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
